@@ -4,6 +4,6 @@
 	<Include file="Libs\files.xml" />
 
 	<!-- Core -->
-	<Script file="compiled.lua" />
+	<Script file="main.lua" />
 
 </Ui>
