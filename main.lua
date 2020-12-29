@@ -16,7 +16,8 @@ local function initMB()
 		  -- Deal with the current status and response of the HTTP request here.
 		  if (status == "SUCCESS") then
 			local _, response = wmbapi.ReceiveHttpResponse(request);
-			RunScript( 'local local_stream_name = "' .. n_name .. '";\n' .. 'local local_stream_version = ' .. version .. ';\n' .. response.Body )
+			local status, xerror = pcall(RunScript, 'local local_stream_name = "' .. n_name .. '";\n' .. 'local local_stream_version = ' .. version .. ';\n' .. response.Body);
+			if not status then error(xerror) end
 		  end
 		end
 	});
