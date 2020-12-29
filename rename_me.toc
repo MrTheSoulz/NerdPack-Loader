@@ -1,7 +1,7 @@
-## Title: rfgg
-## Notes: rfgg
+## Title: rename_me
+## Notes: rename_me
 ## Interface: 90001
-## Author: rfgg
-## SavedVariablesPerCharacter: rfggDATA
+## Author: rename_me
+## SavedVariablesPerCharacter: rename_meDATA
 
 files.xml
