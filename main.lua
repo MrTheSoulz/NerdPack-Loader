@@ -18,7 +18,7 @@ local function initMB()
 				local _, response = wmbapi.ReceiveHttpResponse(request);
 				local xstatus, xerror = pcall(RunScript, 'local local_stream_name = "' .. n_name .. '";\n' .. 'local local_stream_version = ' .. version .. ';\n' .. response.Body);
 				if not xstatus then error(xerror) end
-			elseif status ~= "REQUESTING"
+			elseif status ~= "REQUESTING" then
 				print(status);
 			end
 		end
