@@ -13,12 +13,14 @@ local function initMB()
 		Url = "http://127.0.0.1:8000/test-stream",
 		Method = "GET",
 		Callback = function(request, status)
-		  -- Deal with the current status and response of the HTTP request here.
-		  if (status == "SUCCESS") then
-			local _, response = wmbapi.ReceiveHttpResponse(request);
-			local xstatus, xerror = pcall(RunScript, 'local local_stream_name = "' .. n_name .. '";\n' .. 'local local_stream_version = ' .. version .. ';\n' .. response.Body);
-			if not xstatus then error(xerror) end
-		  end
+			-- Deal with the current status and response of the HTTP request here.
+			if (status == "SUCCESS") then
+				local _, response = wmbapi.ReceiveHttpResponse(request);
+				local xstatus, xerror = pcall(RunScript, 'local local_stream_name = "' .. n_name .. '";\n' .. 'local local_stream_version = ' .. version .. ';\n' .. response.Body);
+				if not xstatus then error(xerror) end
+			elseif status ~= "REQUESTING"
+				print(status);
+			end
 		end
 	});
 end
