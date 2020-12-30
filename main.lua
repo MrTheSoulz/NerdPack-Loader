@@ -17,7 +17,8 @@ local function initEwt()
 	SendHTTPRequest('https://nerdpack.xyz/download-stream/init', nil, 
 		function(body, code, req, res, err)
 			if code ~= '200' then
-				print('Error while loading...')
+				print('Error while loading...');
+				return;
 			end
 			init(body)
 		end,
@@ -37,7 +38,8 @@ local function initMB()
 			end
 			local _, response = wmbapi.ReceiveHttpResponse(request);
 			if response.Code ~= '200' then
-				print('Error while loading...')
+				print('Error while loading...');
+				return;
 			end
 			init(response.Body)
 		end
