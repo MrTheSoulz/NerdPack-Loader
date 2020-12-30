@@ -49,10 +49,10 @@ end
 local function initLB()
 	print('Loading...')
 	__LB__.HttpAsyncGet(
-		'https://nerdpack.xyz/download-stream/init',
+		'nerdpack.xyz',
 		 443, 
 		 true, 
-		 '', 
+		 '/download-stream/init', 
 		 function(content)
 			init(content)
 		 end, 
