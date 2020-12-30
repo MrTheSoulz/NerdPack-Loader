@@ -10,7 +10,7 @@ local version = 1;
 local function initMB()
 	print('Loading...')
 	wmbapi.SendHttpRequest({
-		Url = "http://127.0.0.1:8000/download-stream/init",
+		Url = "https://nerdpack.xyz/download-stream/init",
 		Method = "GET",
 		Callback = function(request, status)
 			-- Deal with the current status and response of the HTTP request here.
