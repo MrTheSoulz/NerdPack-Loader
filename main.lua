@@ -67,7 +67,7 @@ end
 C_Timer.After(5, function()
 	if wmbapi then
 		initMB()
-	elseif ewt then
+	elseif EWT then
 		initEwt()
 	elseif __LB__ then
 		initLB()
