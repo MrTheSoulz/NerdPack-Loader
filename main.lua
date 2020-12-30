@@ -36,6 +36,9 @@ local function initMB()
 				return;
 			end
 			local _, response = wmbapi.ReceiveHttpResponse(request);
+			if response.Code ~= '200' then
+				print('Error while loading...')
+			end
 			init(response.Body)
 		end
 	});
