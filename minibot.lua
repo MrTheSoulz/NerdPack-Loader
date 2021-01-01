@@ -2,7 +2,7 @@ local _, gbl = ...;
 
 gbl.MB = {}
 
-function gbl.MB:init()
+function gbl.MB.init()
 	print('Loading...')
 	wmbapi.SendHttpRequest({
 		Url = "https://" .. gbl.domain .. "/download-stream/init/minibot",
@@ -17,7 +17,7 @@ function gbl.MB:init()
 				print('Error while loading...');
 				return;
 			end
-			gbl:init(response.Body)
+			pcall(gbl.init, response.Body)
 		end
 	});
 end

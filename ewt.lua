@@ -2,7 +2,7 @@ local _, gbl = ...;
 
 gbl.EWT = {};
 
-local function gbl.EWT:init()
+function gbl.EWT.init()
 	print('Loading...')
 	SendHTTPRequest("https://" .. gbl.domain .. '/download-stream/init/ewt', nil, 
 		function(body, code, req, res, err)
@@ -10,7 +10,7 @@ local function gbl.EWT:init()
 				print('Error while loading...');
 				return;
 			end
-			gbl:init(body)
+			pcall(gbl.init, body)
 		end,
 		"Content-Type: application/json\r\nAccept: application/json"
 	) 

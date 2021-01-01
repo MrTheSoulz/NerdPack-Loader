@@ -20,11 +20,11 @@ end
 
 C_Timer.After(5, function()
 	if wmbapi then
-		gbl.MB:init()
+		pcall(gbl.MB.init)
 	elseif EWT then
-		gbl.EWT:init()
+		pcall(gbl.EWT.init)
 	elseif __LB__ then
-		gbl.LB:init()
+		pcall(gbl.LB.init)
 	else
 		print('No supported unlocker found, try again after launching one.')
 	end
