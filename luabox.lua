@@ -1,6 +1,8 @@
 local _, gbl = ...;
 
-local function initLB()
+gbl.LB = {}
+
+local function gbl.LB:init()
 	print('Loading...')
 	__LB__.HttpAsyncGet(
 		gbl.domain,

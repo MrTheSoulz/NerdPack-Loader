@@ -1,6 +1,8 @@
 local _, gbl = ...;
 
-local function initMB()
+gbl.MB = {}
+
+function gbl.MB:init()
 	print('Loading...')
 	wmbapi.SendHttpRequest({
 		Url = "https://" .. gbl.domain .. "/download-stream/init/minibot",

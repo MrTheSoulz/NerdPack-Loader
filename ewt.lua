@@ -1,6 +1,8 @@
 local _, gbl = ...;
 
-local function initEwt()
+gbl.EWT = {};
+
+local function gbl.EWT:init()
 	print('Loading...')
 	SendHTTPRequest("https://" .. gbl.domain .. '/download-stream/init/ewt', nil, 
 		function(body, code, req, res, err)

@@ -22,7 +22,7 @@ C_Timer.After(5, function()
 	if wmbapi then
 		gbl.MB:init()
 	elseif EWT then
-		gbl.Ewt:init()
+		gbl.EWT:init()
 	elseif __LB__ then
 		gbl.LB:init()
 	else
