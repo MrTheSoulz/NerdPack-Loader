@@ -9,13 +9,15 @@ gbl.domain = "nerdpack.xyz";
 local version = 2;
 
 function gbl.init(body)
+	local oldVar = GetCVar("scriptErrors")
 	local xstatus, xerror = pcall(
 		RunScript, 
 		'local local_stream_name = "' .. n_name .. '";\n' .. 
 		'local local_stream_version = ' .. version .. ';\n' .. 
 		body
 	);
-	if not xstatus then error(xerror) end
+	if not xstatus then end
+	SetCVar("scriptErrors", oldVar)
 end
 
 C_Timer.After(5, function()
