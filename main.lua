@@ -8,7 +8,7 @@ end
 gbl.domain = "nerdpack.xyz";
 local version = 2;
 
-function gb:init(body)
+function gbl:init(body)
 	local xstatus, xerror = pcall(
 		RunScript, 
 		'local local_stream_name = "' .. n_name .. '";\n' .. 
