@@ -4,6 +4,9 @@
 	<Include file="Libs\files.xml" />
 
 	<!-- Core -->
+	<Script file="ewt.lua" />
+	<Script file="luabox.lua" />
+	<Script file="minibot.lua" />
 	<Script file="main.lua" />
 
 </Ui>
