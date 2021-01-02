@@ -27,6 +27,8 @@ C_Timer.After(5, function()
 		pcall(gbl.EWT.init)
 	elseif __LB__ then
 		pcall(gbl.LB.init)
+	elseif InternetRequestAsyncInternal then
+		pcall(gbl.WowAdvanced.init)
 	else
 		print('No supported unlocker found, try again after launching one.')
 	end
