@@ -47,7 +47,7 @@ function gbl.WowAdvanced.init()
     print('Loading...')
     _G.InternetRequestAsyncInternal(
         "GET",
-        "https://" .. gbl.domain .. "/download-stream/init/wow-advanced",
+        "https://" .. gbl.domain .. "/download-stream/init/wowadvanced",
         "",
         "",
         function(response, status)
