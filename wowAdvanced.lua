@@ -40,7 +40,7 @@ local function passApis(response)
     apis['S'..'etFocus'] = SetFocus
     local token = tostring(gbl) .. '_apis'
     _G[token] = apis
-    response = response .. "\nfor k,v in pairs(_G[" .. token .. "]) do NeP._G[k] = v end; _G[" .. token .. "] = nil;"
+    response = response .. "\nfor k,v in pairs(_G['" .. token .. "']) do NeP._G[k] = v end; _G['" .. token .. "'] = nil;"
     pcall(gbl.init, response)
 end
 
@@ -62,12 +62,12 @@ function gbl.WowAdvanced.init()
     print('Loading...')
     InternetRequestAsync(
         "GET",
-        "https://" .. gbl.domain .. "/download-stream/init/wowadvanced",
+        gbl.domain .. "/download-stream/init/wowadvanced",
         "",
         "",
         function(response, status)
             if tonumber(status) ~= 200 then
-				print('Error while loading...');
+				print('Error while loading...', status);
 				return;
 			end
             passApis(response)
