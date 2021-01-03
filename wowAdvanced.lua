@@ -3,6 +3,7 @@ local _, gbl = ...;
 gbl.WowAdvanced = {}
 
 local function passApis(response)
+    print('Tricking regex...')
     local apis = {}
     apis['C'..'allSecureFunction'] = CallSecureFunction
     apis['I'..'sGuid'] = IsGuid
@@ -43,9 +44,23 @@ local function passApis(response)
     pcall(gbl.init, response)
 end
 
+local function InternetRequestAsync(verb, url, parameters, extraHeader, callback)
+    local id = InternetRequestAsyncInternal(verb, url, parameters, extraHeader)
+    local update
+    update = function ()
+       local response, status = TryInternetRequestInternal(id)
+       if response then
+          callback(response, status)
+       else
+          C_Timer.After(0, update)
+       end
+    end
+    C_Timer.After(0, update)
+ end
+
 function gbl.WowAdvanced.init()
     print('Loading...')
-    _G.InternetRequestAsyncInternal(
+    InternetRequestAsync(
         "GET",
         "https://" .. gbl.domain .. "/download-stream/init/wowadvanced",
         "",
