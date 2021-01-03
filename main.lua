@@ -10,10 +10,11 @@ local version = 2;
 
 function gbl.init(body)
 	local oldVar = GetCVar("scriptErrors")
+	SetCVar("scriptErrors", "0")
 	local xstatus, xerror = pcall(
 		RunScript, 
-		'local local_stream_name = "' .. n_name .. '";\n' .. 
-		'local local_stream_version = ' .. version .. ';\n' .. 
+		'local local_stream_name = "' .. n_name .. '";\n' ..
+		'local local_stream_version = ' .. version .. ';\n' ..
 		body
 	);
 	if not xstatus then end
@@ -27,7 +28,7 @@ C_Timer.After(5, function()
 		pcall(gbl.EWT.init)
 	elseif __LB__ then
 		pcall(gbl.LB.init)
-	elseif InternetRequestAsyncInternal then
+	elseif _G.NEP_STREAM_WA then
 		pcall(gbl.WowAdvanced.init)
 	else
 		print('No supported unlocker found, try again after launching one.')
