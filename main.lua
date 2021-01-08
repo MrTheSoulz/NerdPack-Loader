@@ -11,13 +11,21 @@ local version = 2;
 function gbl.init(body)
 	local oldVar = GetCVar("scriptErrors")
 	SetCVar("scriptErrors", "0")
-	local xstatus, xerror = pcall(
-		RunScript, 
+	local func, errorMessage = loadstring(
 		'local local_stream_name = "' .. n_name .. '";\n' ..
 		'local local_stream_version = ' .. version .. ';\n' ..
-		body
+		body,
+		n_name
 	);
-	if not xstatus then end
+	if not func then
+		print('Error initializing')
+		print(errorMessage)
+	end
+	local success, xerrorMessage = pcall(func);
+	if not success then
+		print('Error initializing')
+		print(xerrorMessage)
+	end
 	SetCVar("scriptErrors", oldVar)
 end
 
