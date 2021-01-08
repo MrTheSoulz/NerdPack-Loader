@@ -21,7 +21,8 @@ function gbl.init(body)
 	SetCVar("scriptErrors", oldVar)
 end
 
-C_Timer.After(5, function()
+local test
+test = function()
 	if wmbapi then
 		pcall(gbl.MB.init)
 	elseif EWT then
@@ -31,6 +32,9 @@ C_Timer.After(5, function()
 	elseif _G.NEP_STREAM_WA then
 		pcall(gbl.WowAdvanced.init)
 	else
-		print('No supported unlocker found, try again after launching one.')
+		C_Timer.After(0, test)
 	end
-end)
+end
+
+print('Searching for unlocker...')
+C_Timer.After(0, test)
