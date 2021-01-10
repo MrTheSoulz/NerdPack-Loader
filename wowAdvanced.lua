@@ -7,7 +7,7 @@ local function passApis(response)
     response = response ..
     "\nfor k,v in pairs(_G.NEP_STREAM_WA) do NeP._G[k] = v end;" ..
     "_G.NEP_STREAM_WA = nil;"
-    pcall(gbl.init, response)
+    gbl.init(response)
 end
 
 local function InternetRequestAsync(verb, url, parameters, extraHeader, callback)

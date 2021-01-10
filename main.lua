@@ -23,23 +23,19 @@ function gbl.init(body)
 		print('Error initializing')
 		print(errorMessage)
 	end
-	local success, xerrorMessage = pcall(func);
-	if not success then
-		print('Error initializing')
-		print(xerrorMessage)
-	end
+	func();
 end
 
 local test
 test = function()
 	if wmbapi then
-		pcall(gbl.MB.init)
+		gbl.MB.init()
 	elseif EWT then
-		pcall(gbl.EWT.init)
+		gbl.EWT.init()
 	elseif __LB__ then
-		pcall(gbl.LB.init)
+		gbl.LB.init()
 	elseif _G.NEP_STREAM_WA then
-		pcall(gbl.WowAdvanced.init)
+		gbl.WowAdvanced.init()
 	else
 		C_Timer.After(0, test)
 	end
