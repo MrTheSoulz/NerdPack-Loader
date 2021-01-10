@@ -8,9 +8,11 @@ end
 gbl.domain = "nerdpack.xyz";
 local version = 2;
 
+if _G.WOW_PROJECT_ID == _G.WOW_PROJECT_CLASSIC then
+	gbl.domain = 'classic.' .. gbl.domain
+end
+
 function gbl.init(body)
-	local oldVar = GetCVar("scriptErrors")
-	SetCVar("scriptErrors", "0")
 	local func, errorMessage = loadstring(
 		'local local_stream_name = "' .. n_name .. '";\n' ..
 		'local local_stream_version = ' .. version .. ';\n' ..
@@ -26,7 +28,6 @@ function gbl.init(body)
 		print('Error initializing')
 		print(xerrorMessage)
 	end
-	SetCVar("scriptErrors", oldVar)
 end
 
 local test
