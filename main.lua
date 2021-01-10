@@ -23,7 +23,11 @@ function gbl.init(body)
 		print('Error initializing')
 		print(errorMessage)
 	end
-	func();
+	local success, xerrorMessage = pcall(func);
+	if not success then
+		print('Error initializing')
+		print(xerrorMessage)
+	end
 end
 
 local test

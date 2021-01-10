@@ -10,7 +10,7 @@ function gbl.LB.init()
 		 true,
 		 '/download-stream/init/luabox',
 		 function(content)
-			pcall(gbl.init, content)
+			gbl.init(content)
 		 end,
 		 function(xerror)
 			print('Error while loading...')

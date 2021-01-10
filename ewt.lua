@@ -10,8 +10,8 @@ function gbl.EWT.init()
 				print('Error while loading...');
 				return;
 			end
-			pcall(gbl.init, body)
+			gbl.init(body)
 		end,
 		"Content-Type: application/json\r\nAccept: application/json"
-	) 
+	)
 end
