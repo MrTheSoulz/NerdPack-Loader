@@ -4,7 +4,9 @@ gbl.WowAdvanced = {}
 local g = _G.NEP_STREAM_WA
 
 local function passApis(response)
-    response = response .. "\nfor k,v in pairs(_G.NEP_STREAM_WA) do NeP._G[k] = v end; _G.NEP_STREAM_WA = nil;"
+    response = response ..
+    "\nfor k,v in pairs(_G.NEP_STREAM_WA) do NeP._G[k] = v end;" ..
+    "_G.NEP_STREAM_WA = nil;"
     pcall(gbl.init, response)
 end
 
