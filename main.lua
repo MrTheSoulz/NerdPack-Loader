@@ -6,7 +6,7 @@ if n_name:lower():match('nerdpack') then
 end
 
 gbl.domain = "nerdpack.xyz";
-local version = 2;
+local version = 3;
 
 if _G.WOW_PROJECT_ID == _G.WOW_PROJECT_CLASSIC then
 	gbl.domain = 'classic.' .. gbl.domain
