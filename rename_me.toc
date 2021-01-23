@@ -2,6 +2,5 @@
 ## Notes: rename_me
 ## Interface: 90001
 ## Author: rename_me
-## SavedVariablesPerCharacter: rename_meDATA
 
 files.xml
