@@ -12,6 +12,10 @@ if _G.WOW_PROJECT_ID == _G.WOW_PROJECT_CLASSIC then
 	gbl.domain = 'classic.' .. gbl.domain
 end
 
+local function errorhandler(err)
+	return geterrorhandler()(err)
+end
+
 function gbl.init(body)
 	local func, errorMessage = loadstring(
 		'local local_stream_name = "' .. n_name .. '";\n' ..
@@ -21,12 +25,12 @@ function gbl.init(body)
 	);
 	if not func then
 		print('Error initializing')
-		print(errorMessage)
+		errorhandler(errorMessage)
 	end
-	local success, xerrorMessage = pcall(func);
+	local success, xerrorMessage = xpcall(func, errorhandler);
 	if not success then
 		print('Error initializing')
-		print(xerrorMessage)
+		errorhandler(xerrorMessage)
 	end
 end
 
@@ -38,7 +42,7 @@ test = function()
 		gbl.EWT.init()
 	elseif __LB__ then
 		gbl.LB.init()
-	elseif _G.NEP_STREAM_WA then
+	elseif _G.CallSecureFunction or _G.NEP_STREAM_WA then
 		gbl.WowAdvanced.init()
 	else
 		C_Timer.After(0, test)

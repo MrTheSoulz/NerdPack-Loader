@@ -22,7 +22,7 @@ local function InternetRequestAsync(verb, url, parameters, extraHeader, callback
        end
     end
     C_Timer.After(0, update)
- end
+end
 
 function gbl.WowAdvanced.init()
     print('Loading...')
