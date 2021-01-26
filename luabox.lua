@@ -4,7 +4,7 @@ gbl.LB = {}
 
 function gbl.LB.init()
 	print('Loading...')
-	_G.NeP_STREAM__LB__.HttpAsyncGet(
+	_G.__LB__.HttpAsyncGet(
 		gbl.domain,
 		 443,
 		 true,
