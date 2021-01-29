@@ -16,6 +16,8 @@ local function errorhandler(err)
 	return geterrorhandler()(err)
 end
 
+local NEP_STREAM_WA = _G.NEP_STREAM_WA
+
 function gbl.init(body)
 	local func, errorMessage = loadstring(
 		'local local_stream_name = "' .. n_name .. '";\n' ..
@@ -26,6 +28,11 @@ function gbl.init(body)
 	if not func then
 		print('Error initializing')
 		errorhandler(errorMessage)
+	end
+	if NEP_STREAM_WA then
+		_G.NEP_STREAM_WA = nil
+		local custom_env = setmetatable(NEP_STREAM_WA, {__index=_G})
+		setfenv(func, custom_env)
 	end
 	local success, xerrorMessage = xpcall(func, errorhandler);
 	if not success then
@@ -42,7 +49,7 @@ test = function()
 		gbl.EWT.init()
 	elseif __LB__ then
 		gbl.LB.init()
-	elseif _G.CallSecureFunction or _G.NEP_STREAM_WA then
+	elseif _G.CallSecureFunction or NEP_STREAM_WA then
 		gbl.WowAdvanced.init()
 	else
 		C_Timer.After(0, test)

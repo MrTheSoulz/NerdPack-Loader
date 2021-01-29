@@ -1,20 +1,13 @@
 local _, gbl = ...;
 
 gbl.WowAdvanced = {}
-local g = _G.NEP_STREAM_WA
-
-local function passApis(response)
-    response = response ..
-    "\nfor k,v in pairs(_G.NEP_STREAM_WA) do NeP._G[k] = v end;" ..
-    "_G.NEP_STREAM_WA = nil;"
-    gbl.init(response)
-end
+local NEP_STREAM_WA = _G.CallSecureFunction and _G or _G.NEP_STREAM_WA
 
 local function InternetRequestAsync(verb, url, parameters, extraHeader, callback)
-    local id = g.InternetRequestAsyncInternal(verb, url, parameters, extraHeader)
+    local id = NEP_STREAM_WA.InternetRequestAsyncInternal(verb, url, parameters, extraHeader)
     local update
     update = function ()
-       local response, status = g.TryInternetRequestInternal(id)
+       local response, status = NEP_STREAM_WA.TryInternetRequestInternal(id)
        if response then
           callback(response, status)
        else
@@ -36,7 +29,7 @@ function gbl.WowAdvanced.init()
 				print('Error while loading...', status);
 				return;
 			end
-            passApis(response)
+            gbl.init(response)
         end
     )
 end
