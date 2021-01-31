@@ -18,6 +18,7 @@ end
 
 local NEP_STREAM_WA = _G.NEP_STREAM_WA
 
+
 function gbl.init(body)
 	local func, errorMessage = loadstring(
 		'local local_stream_name = "' .. n_name .. '";\n' ..
@@ -31,7 +32,7 @@ function gbl.init(body)
 	end
 	if NEP_STREAM_WA then
 		_G.NEP_STREAM_WA = nil
-		local custom_env = setmetatable(NEP_STREAM_WA, {__index=_G})
+		local custom_env = setmetatable({local_streamed_apis = NEP_STREAM_WA}, {__index=_G})
 		setfenv(func, custom_env)
 	end
 	local success, xerrorMessage = xpcall(func, errorhandler);
